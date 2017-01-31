@@ -1,3 +1,56 @@
+# Variables
+
+0. Variables in PHP are represented by a dollar sign ($) followed by the name of the variable. The variable name is case-sensitive. (http://nl3.php.net/manual/en/language.variables.basics.php)
+1. A valid variable name starts with a letter or underscore, followed by any number of letters, numbers, or underscores.
+2. Variable has name, type and value.
+
+```php
+$var = 'Bob';
+$Var = 'Joe';
+echo "$var, $Var"; // outputs "Bob, Joe"
+```
+
+## [Variable Types](http://nl3.php.net/manual/en/language.types.php)
+
+0. String
+1. Int
+2. Boolean
+3. Float
+
+## Examples
+
+```php
+$somevar = 'foo'; // string
+$othervar = 123; // int
+$onemore = true; // boolean
+$andanother = 3.14 // float
+```
+
+Variables can change value and type
+
+```php
+$foo = 5;
+var_dump($foo); // int(5)
+$foo = 42;
+var_dump($foo); // int(42) changed value only
+$foo = 'bar';
+var_dump($foo); // string(3) 'bar' changed value and type
+```
+
+### Comparing variables
+
+```php
+$a = 1;
+$b = 1;
+var_dump($a == $b); // true
+$b = 2;
+var_dump($a == $b); // false
+$b = '1';
+var_dump($a == $b); // true
+var_dump($a === $b); // false
+var_dump($a > $b); // false
+```
+
 # Configuring Sublime Text
 
 0. Install [Sublime Text 3](https://www.sublimetext.com/3)
