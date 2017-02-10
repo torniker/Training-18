@@ -1,0 +1,4 @@
+home,Home Page,Home Content,text
+about,About Page,About Content,text
+contact,Contact Page,Contact Content,text
+foo,Foo Page,Foo Content,text
