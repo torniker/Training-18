@@ -1,0 +1,6 @@
+home,Home Page,Home Content,text
+about,About Page title1,About Content1231,text
+contact,Contact Page,Contact Content,text
+foo,Foo Page,Foo Content,text
+map,Mapppppp,Map page content,text
+alert,Alert,<script>alert('asasdfa')</script>,text

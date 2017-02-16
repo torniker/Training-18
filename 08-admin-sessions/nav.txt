@@ -1,0 +1,6 @@
+home,2017-02-16 16:33:07,Home
+about,2017-02-16 16:33:07,About11
+contact,2017-02-16 16:33:07,Contact Us
+foo,2017-02-16 16:33:07,Fooooooo
+map,2017-02-16 16:33:07,Map
+alert,2017-02-16 16:33:07,Alert
