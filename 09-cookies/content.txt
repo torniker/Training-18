@@ -1,0 +1,3 @@
+home,Home Page,Home Content,text
+about,About Page title1,About Content1231,text
+contact,Contact Page,Contact Content,text
