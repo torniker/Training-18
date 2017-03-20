@@ -11,7 +11,13 @@ if (!empty($_POST['body'])) {
 }
 if (isset($_GET['username'])) {
     $username = mysqli_real_escape_string($link, $_GET['username']);
-    $query = sprintf("SELECT posts.id, body, created_at, username, user_id FROM posts JOIN users ON posts.user_id = users.id WHERE users.username='%s' ORDER BY created_at DESC", $username);
+    $query = sprintf("
+        SELECT
+            posts.id, body, created_at, username, user_id,
+            (SELECT SUM(rank) as ranking FROM posts_ranking WHERE posts_ranking.post_id = posts.id and rank = 1) as positive_ranking,
+            (SELECT SUM(rank) as ranking FROM posts_ranking WHERE posts_ranking.post_id = posts.id and rank = -1) as negative_ranking
+        FROM
+            posts JOIN users ON posts.user_id = users.id WHERE users.username='%s' ORDER BY created_at DESC", $username);
 } else {
     $query = "
         SELECT
