@@ -7,14 +7,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Add Post</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('post.add') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('posts.store') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label for="title" class="col-md-4 control-label">Title</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required autofocus>
+                                <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" autofocus>
 
                                 @if ($errors->has('title'))
                                     <span class="help-block">
@@ -25,10 +25,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
-                            <label for="body" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="body" class="col-md-4 control-label">Body</label>
 
                             <div class="col-md-6">
-                                <textarea id="body" class="form-control" name="body" required>{{ old('body') }}</textarea>
+                                <textarea id="body" class="form-control" name="body">{{ old('body') }}</textarea>
 
                                 @if ($errors->has('body'))
                                     <span class="help-block">

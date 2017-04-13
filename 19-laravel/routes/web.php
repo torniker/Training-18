@@ -12,8 +12,8 @@ Route::get('/about', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-
-Route::get('/post', 'PostController@index');
-Route::get('/post/create', 'PostController@create')->name('post.add');
-Route::post('/post/create', 'PostController@store')->name('post.add');
+// Route::get('/post', 'PostController@index');
+// Route::get('/post/create', 'PostController@create')->name('post.add');
+// Route::post('/post/create', 'PostController@store')->name('post.add');
+Route::resource('posts', 'PostController');
+Route::get('posts/{post}/delete', 'PostController@destroy')->name('posts.destroy');
