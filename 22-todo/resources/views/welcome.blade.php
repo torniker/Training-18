@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Laravel</title>
-        <script>
+        <script type="text/javascript">
             window.Laravel = <?=json_encode(['csrfToken' => csrf_token()]);?>
         </script>
         <link href="/css/app.css" rel="stylesheet" type="text/css">
@@ -13,7 +13,7 @@
     </head>
     <body>
         <div id="app">
-            <todo></todo>
+            <todo :value="{{ $todos }}"></todo>
         </div>
     </body>
 </html>

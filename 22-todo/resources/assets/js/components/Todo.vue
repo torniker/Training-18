@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <form v-on:submit.prevent="onSubmit">
+                <form @submit.prevent="onSubmit">
                     <div class="input-group">
                         <input type="text" class="form-control" v-model="newItem" placeholder="რა უნდა ქნა?">
                         <span class="input-group-btn">
@@ -28,13 +28,18 @@
 </template>
 <script>
     export default {
+        props: {
+            value: Array,
+        },
         data() {
             return {
                 newItem: '',
                 todos: [],
             };
         },
-        mounted() {},
+        mounted() {
+            this.todos = this.value;
+        },
         computed: {
             completed() {
                 return this.todos.filter(function (item) {
@@ -49,10 +54,26 @@
         },
         methods: {
             onSubmit() {
-                this.todos.push({ text: this.newItem, isCompleted: false});
+                var todo = { text: this.newItem, isCompleted: false};
+                this.todos.push(todo);
+                this.save(todo);
                 this.newItem = '';
             },
+            save(todo) {
+                axios.post('/todos', todo).then(response => {
+                    console.log('saved');
+                    todo.id = response.data.id;
+                }, response => {
+                    console.error(response);
+                });
+                console.log('submit');
+            },
             toggleComplete(todo) {
+                axios.post('/todos/'+todo.id, {}).then(response => {
+                    console.log(response);
+                }, response => {
+                    console.error(response);
+                });
                 todo.isCompleted = !todo.isCompleted;
             }
         }
