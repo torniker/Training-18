@@ -167,7 +167,7 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
-        Emadadly\LaravelUuid\LaravelUuidServiceProvider::class,
+        // Emadadly\LaravelUuid\LaravelUuidServiceProvider::class,
 
         /*
          * Application Service Providers...

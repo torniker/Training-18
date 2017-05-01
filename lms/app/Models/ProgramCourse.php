@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Emadadly\LaravelUuid\Uuids;
+use App\Traits\UuidModelTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class ProgramCourse extends Model
 {
-    use Uuids;
+    use UuidModelTrait;
 
     protected $fillable = [
         'course_id', 'program_id', 'type',

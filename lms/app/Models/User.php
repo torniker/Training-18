@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use Emadadly\LaravelUuid\Uuids;
+use App\Traits\UuidModelTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
     use Notifiable;
-    use Uuids;
+    use UuidModelTrait;
 
     /**
      * The attributes that are mass assignable.
