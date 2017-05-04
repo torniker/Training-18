@@ -9,6 +9,8 @@ class Program extends Model
 {
     use UuidModelTrait;
 
+    protected $with = ['faculty'];
+
     protected $fillable = [
         'name', 'faculty_id', 'mandatorty_credits', 'optional_credits',
     ];

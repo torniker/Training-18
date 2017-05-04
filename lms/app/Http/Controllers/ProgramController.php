@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faculty;
+use App\Models\Program;
 use Illuminate\Http\Request;
 use Validator;
 
-class FacultyController extends Controller
+class ProgramController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all();
-        return view('faculty.index')->with('faculties', $faculties);
+        $programs = Program::all();
+        return view('program.index')->with('programs', $programs);
     }
 
     /**
@@ -26,7 +27,8 @@ class FacultyController extends Controller
      */
     public function create()
     {
-        return view('faculty.create');
+        $faculties = Faculty::all();
+        return view('program.create')->with('faculties', $faculties);
     }
 
     /**
@@ -38,7 +40,10 @@ class FacultyController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
+            'name'               => 'required|max:255',
+            'faculty_id'         => 'required|exists:faculties,id',
+            'mandatorty_credits' => 'required|integer',
+            'optional_credits'   => 'required|integer',
         ]);
 
         if ($validator->fails()) {
@@ -46,10 +51,8 @@ class FacultyController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-
-        $faculty = Faculty::create($request->all());
-
-        return redirect()->route('faculties.index');
+        $program = Program::create($request->all());
+        return redirect()->route('programs.index');
     }
 
     /**
@@ -60,8 +63,10 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $faculty = Faculty::findOrFail($id);
-        return view('faculty.show')->with('faculty', $faculty);
+        $program = Program::findOrFail($id);
+
+        return view('program.show')
+            ->with('program', $program);
     }
 
     /**
@@ -72,8 +77,11 @@ class FacultyController extends Controller
      */
     public function edit($id)
     {
-        $faculty = Faculty::findOrFail($id);
-        return view('faculty.edit')->with('faculty', $faculty);
+        $program = Program::findOrFail($id);
+        $faculties = Faculty::all();
+        return view('program.edit')
+            ->with('program', $program)
+            ->with('faculties', $faculties);
     }
 
     /**
@@ -86,18 +94,19 @@ class FacultyController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
+            'name'               => 'required|max:255',
+            'faculty_id'         => 'required|exists:faculties,id',
+            'mandatorty_credits' => 'required|integer',
+            'optional_credits'   => 'required|integer',
         ]);
 
         if ($validator->fails()) {
             return back()
                 ->withErrors($validator);
         }
-
-        $faculty = Faculty::findOrFail($id);
-        $faculty->fill($request->all());
-        $faculty->save();
-
-        return redirect()->route('faculties.show', $faculty->id);
+        $program = Program::findOrFail($id);
+        $program->fill($request->all());
+        $program->save();
+        return redirect()->route('programs.show', $program->id);
     }
 }
