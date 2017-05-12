@@ -9,6 +9,8 @@ class ProgramCourse extends Model
 {
     use UuidModelTrait;
 
+    protected $table = 'programs_courses';
+
     protected $fillable = [
         'course_id', 'program_id', 'type',
     ];
