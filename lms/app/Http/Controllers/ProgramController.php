@@ -17,6 +17,9 @@ class ProgramController extends Controller
     public function index()
     {
         $programs = Program::all();
+        foreach ($programs as $program) {
+            echo $program->faculty->name;
+        }
         return view('program.index')->with('programs', $programs);
     }
 
