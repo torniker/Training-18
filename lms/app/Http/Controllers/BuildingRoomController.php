@@ -92,4 +92,11 @@ class BuildingRoomController extends Controller
     {
         //
     }
+
+    public function rooms($building_id)
+    {
+        $building = Building::findOrFail($building_id);
+        $rooms = $building->rooms;
+        return $rooms;
+    }
 }

@@ -32,5 +32,15 @@
     Optional Credits:
     <input type="number" name="optional_credits" value="{{ $program->optional_credits }}">
     </p>
+    <p>
+    {{ $errors->first('featured') }}
+    Featured:
+    <input type="hidden" name="featured" value="0">
+    <input type="checkbox" name="featured" value="1"
+    @if($program->featured)
+        checked="checked"
+    @endif
+    >
+    </p>
     <button type="submit">Save</button>
 </form>

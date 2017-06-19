@@ -16,10 +16,7 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $programs = Program::all();
-        foreach ($programs as $program) {
-            echo $program->faculty->name;
-        }
+        $programs = Program::paginate(2);
         return view('program.index')->with('programs', $programs);
     }
 

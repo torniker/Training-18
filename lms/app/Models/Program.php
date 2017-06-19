@@ -12,13 +12,14 @@ class Program extends Model
     protected $with = ['faculty'];
 
     protected $fillable = [
-        'name', 'faculty_id', 'mandatorty_credits', 'optional_credits',
+        'name', 'faculty_id', 'mandatorty_credits', 'optional_credits', 'featured',
     ];
 
     protected $casts = [
         'name'               => 'string',
         'mandatorty_credits' => 'integer',
         'optional_credits'   => 'integer',
+        'featured'           => 'boolean',
     ];
 
     public function faculty()

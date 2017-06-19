@@ -18,6 +18,7 @@ Route::group(['middleware' => 'is_admin'], function () {
     Route::resource('faculties', 'FacultyController', ['except' => ['destroy']]);
     Route::resource('buildings', 'BuildingController', ['except' => ['destroy']]);
     Route::resource('buildings.rooms', 'BuildingRoomController', ['except' => ['destroy']]);
+    Route::get('rooms/{building_id}', 'BuildingRoomController@rooms');
 });
 Route::resource('programs', 'ProgramController', ['except' => ['destroy']]);
 Route::resource('courses', 'CourseController', ['except' => ['destroy']]);
